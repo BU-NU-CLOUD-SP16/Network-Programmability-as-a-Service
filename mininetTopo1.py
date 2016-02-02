@@ -11,7 +11,7 @@ import os
 def phase1():
 	print "Create an empty network and add nodes to it."
 
-	net = Mininet(controller=remote,switch=OVSSwitch)
+	net = Mininet(controller=OVSController)
 	
 	print('*** Adding controller\n' ) 
 	c0 = net.addController('c0', port=6633 )
