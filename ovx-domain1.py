@@ -1,7 +1,7 @@
 from os import popen
 
 
-b=["python ovxctl.py -n createNetwork tcp:localhost:10000 10.0.0.0 16",
+cmd=["python ovxctl.py -n createNetwork tcp:localhost:10000 10.0.0.0 16",
 "python ovxctl.py -n createSwitch 1 00:00:00:00:00:00:01:00",
 "python ovxctl.py -n createSwitch 1 00:00:00:00:00:00:02:00",
 "python ovxctl.py -n createSwitch 1 00:00:00:00:00:00:03:00",
@@ -33,5 +33,5 @@ b=["python ovxctl.py -n createNetwork tcp:localhost:10000 10.0.0.0 16",
 "python ovxctl.py -n startNetwork 2"]
 
 
-for i in b:
+for i in cmd:
 	print popen(i).read()
