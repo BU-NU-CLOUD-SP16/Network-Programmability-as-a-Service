@@ -33,7 +33,5 @@ b=["python ovxctl.py -n createNetwork tcp:localhost:10000 10.0.0.0 16",
 "python ovxctl.py -n startNetwork 2"]
 
 
-#a=["ls -l","ls | grep 'a'","arp -a"]
-
 for i in b:
 	print popen(i).read()
