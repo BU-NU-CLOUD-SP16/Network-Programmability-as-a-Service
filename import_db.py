@@ -2,6 +2,7 @@
 import json
 import argparse
 import os
+from pymongo import MongoClient
 
 commands = list()
 len_of_mac = 12
@@ -9,7 +10,7 @@ command_beginning = "sudo python ovxctl.py -n "
 
 
 def main():
-    os.chdir("~/OpenVirteX/utils")
+    os.chdir("/home/ubuntu/OpenVirteX/utils")
     for c in commands:
         tmp = os.popen(c).read()
         print tmp
@@ -38,6 +39,26 @@ def convert_dpid_format(dpid):
     return insert_colons_in_string(hex_value)
 
 
+# Get the mac address of all the hosts for this tenant
+def get_all_hosts_for_tenant(tenantId):
+    list_of_host_macs = set()
+    connection = MongoClient('mongodb://localhost:27017/')
+    db = connection['OVX']
+    collection = db['VNET']
+
+    cursor = collection.find({'tenantId' : tenantId}, {'hosts' : 1})
+    obj = next(cursor, None)
+
+    if obj is not None:
+        hosts = obj['hosts']
+        for host in hosts:
+            if 'mac' in host:
+                mac_addr = host['mac']['$numberLong']
+                list_of_host_macs.add(convert_mac_format(mac_addr))
+
+    return list_of_host_macs
+
+
 
 parser = argparse.ArgumentParser(description="Update OVX database")
 group = parser.add_mutually_exclusive_group()
@@ -53,6 +74,8 @@ with open(args.inp, 'r') as fp:
 
         tenantId = json_data['tenantId']
 
+        list_of_host_macs = get_all_hosts_for_tenant(tenantId)
+
         stop_network = command_beginning + "stopNetwork " + str(tenantId)
         commands.append(stop_network)
 
@@ -61,15 +84,15 @@ with open(args.inp, 'r') as fp:
             dpid = convert_dpid_format(host['vdpid']['$numberLong'])
             port = host['vport']
             mac = convert_mac_format(host['mac']['$numberLong'])
-
-            cmd = command_beginning + " connectHost " +\
-                  str(tenantId) +\
-                  " " +\
-                  str(dpid) +\
-                  " " +\
-                  str(port) +\
-                  " " + str(mac)
-            commands.append(cmd)
+            if mac not in list_of_host_macs:
+                cmd = command_beginning + " connectHost " +\
+                      str(tenantId) +\
+                      " " +\
+                      str(dpid) +\
+                      " " +\
+                      str(port) +\
+                      " " + str(mac)
+                commands.append(cmd)
 
         start_network = command_beginning + "startNetwork " + str(tenantId)
         commands.append(start_network)
