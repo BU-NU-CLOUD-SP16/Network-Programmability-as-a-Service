@@ -53,7 +53,7 @@ def get_all_hosts_for_tenant(tenantId):
         hosts = obj['hosts']
         for host in hosts:
             if 'mac' in host:
-                mac_addr = host['mac']['$numberLong']
+                mac_addr = host['mac']
                 list_of_host_macs.add(convert_mac_format(mac_addr))
 
     return list_of_host_macs
@@ -97,4 +97,4 @@ with open(args.inp, 'r') as fp:
         start_network = command_beginning + "startNetwork " + str(tenantId)
         commands.append(start_network)
 
-main()
+#main()
