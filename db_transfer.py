@@ -2,6 +2,7 @@ import argparse
 from os import popen
 import subprocess
 
+
 parser = argparse.ArgumentParser(description="Transfer and update MongoDB")
 group = parser.add_mutually_exclusive_group()
 group.add_argument("-v", "--verbose", action="store_true")
@@ -25,7 +26,7 @@ print(popen(cmd).read())
 print("Successfully exported DB")
 
 # Copying the file
-cmd = "sudo scp " + source + " " + username + "@" + dest_ip + ":" + source
+cmd = "scp " + source + " " + username + "@" + dest_ip + ":" + source
 print(popen(cmd).read())
 print("Successfully copied to remote OVX")
 
@@ -40,15 +41,6 @@ for line in iter(proc.stdout.readline, ''):
 
 print("Successfully imported DB")
 
-# Delete the temp file
 cmd = ['ssh', username + '@' + dest_ip, 'sudo', 'rm -f', source]
+
 print("Successfully deleted the file")
-
-
-
-
-
-
-
-
-
