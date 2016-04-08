@@ -97,4 +97,4 @@ with open(args.inp, 'r') as fp:
         start_network = command_beginning + "startNetwork " + str(tenantId)
         commands.append(start_network)
 
-#main()
+main()
