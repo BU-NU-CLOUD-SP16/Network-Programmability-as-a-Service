@@ -40,8 +40,9 @@ for line in iter(proc.stdout.readline, ''):
 
 print("Successfully imported DB")
 
-
-
+# Delete the temp file
+cmd = ['ssh', username + '@' + dest_ip, 'sudo', 'rm -f', source]
+print("Successfully deleted the file")
 
 
 
