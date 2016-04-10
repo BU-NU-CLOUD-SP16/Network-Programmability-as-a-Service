@@ -1,0 +1,47 @@
+#Controller 1 to 4
+#start controller
+ubuntu@controller:~$ cd floodlight-0.90/
+ubuntu@controller:~/floodlight-0.90$ sudo sh floodlight.sh
+--------------------------------------------------------------------------------
+
+#Mininet
+#start mininet
+ubuntu@mininet:~$ sudo python tree4sprint4.py
+--------------------------------------------------------------------------------
+
+#OVX1 (OVX2)
+#stop OVX and drop DB 
+ubuntu@ubuntu-server:~$mongo
+>use OVX
+>db.VNET.drop()
+>exit
+#start OVX
+ubuntu@ubuntu-server:~$ cd OpenVirteX/scripts
+sh ovx.sh
+#Create virtual topology
+#open new terminal
+cd
+cd OpenVirteX/utils
+sudo python ovx_virtual_topo1.py (sudo python ovx_virtual_topo2.py)
+--------------------------------------------------------------------------------
+
+#Mininet
+#ping within domain
+mininet> h1 ping -c3 h3
+mininet> h2 ping -c3 h4
+mininet> h5 ping -c3 h7
+mininet> h6 ping -c3 h8
+--------------------------------------------------------------------------------
+
+#OVX1 (OVX2)
+#Transfer DB
+python db_transfer.py -db OVX -c VNET -d 10.0.0.14 -u ubuntu
+(python db_transfer.py -db OVX -c VNET -d 10.0.0.19 -u ubuntu)
+--------------------------------------------------------------------------------
+
+#Mininet
+#ping between different domains
+mininet> h1 ping -c3 h5
+mininet> h2 ping -c3 h6
+mininet> h3 ping -c3 h7
+mininet> h4 ping -c3 h8
