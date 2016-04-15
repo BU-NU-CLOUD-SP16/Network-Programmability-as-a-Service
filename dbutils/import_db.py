@@ -58,7 +58,7 @@ def get_all_hosts_for_tenant(tenantId):
                 mac_addr = host['mac']
                 list_of_host_macs.add(convert_mac_format(mac_addr))
 
-    return (list_of_host_macs, is_tenant_present)
+    return list_of_host_macs, is_tenant_present
 
 
 
