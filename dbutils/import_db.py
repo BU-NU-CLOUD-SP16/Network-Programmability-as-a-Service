@@ -42,6 +42,7 @@ def convert_dpid_format(dpid):
 # Get the mac address of all the hosts for this tenant
 def get_all_hosts_for_tenant(tenantId):
     list_of_host_macs = set()
+    is_tenant_present = False
     connection = MongoClient('mongodb://localhost:27017/')
     db = connection['OVX']
     collection = db['VNET']
@@ -50,13 +51,14 @@ def get_all_hosts_for_tenant(tenantId):
     obj = next(cursor, None)
 
     if obj is not None:
+    	is_tenant_present = True
         hosts = obj['hosts']
         for host in hosts:
             if 'mac' in host:
                 mac_addr = host['mac']
                 list_of_host_macs.add(convert_mac_format(mac_addr))
 
-    return list_of_host_macs
+    return (list_of_host_macs, is_tenant_present)
 
 
 
@@ -74,7 +76,11 @@ with open(args.inp, 'r') as fp:
 
         tenantId = json_data['tenantId']
 
-        list_of_host_macs = get_all_hosts_for_tenant(tenantId)
+        list_of_host_macs, is_tenant_present = get_all_hosts_for_tenant(tenantId)
+	
+	# If the tenant is not present in the OVX, do not add 
+	if not is_tenant_present:
+	    continue
 
         stop_network = command_beginning + "stopNetwork " + str(tenantId)
         commands.append(stop_network)
