@@ -1,0 +1,21 @@
+1. https://raw.githubusercontent.com/abattaje/OpenVirteX/master/src/main/java/net/onrc/openvirtex/api/service/handlers/tenant/CreateOVXNetwork.java
+
+Download the above file and copy to 
+
+/home/ubuntu/OpenVirteX/src/main/java/net/onrc/openvirtex/api/service/handlers/tenant/CreateOVXNetwork.java
+
+
+2. Delete jar file from /home/ubuntu/OpenVirteX/target 
+
+3. Start mongodb as
+
+sudo mongod --master --dbpath /home/ubuntu/mongo_data/ --logpath /home/ubuntu/mongologs --fork
+
+4. Start OVX,
+
+cd /home/ubuntu/OpenVirteX/scripts
+
+sh ovx.sh
+
+
+5. Run the topology creation file with tenant ID of choice 
