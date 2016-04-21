@@ -4,15 +4,18 @@ import socket
 import json
 import threading
 import sys
+from db_util import DBUtil
 
 PORT = 49999
 
 class Client(threading.Thread):
-    def __init__(self, (client_conn, client_addr)):
+    def __init__(self, (client_conn, client_addr), sema):
         threading.Thread.__init__(self)
         self.client_conn = client_conn
         self.client_addr = client_addr
-        self.size = 2048
+        self.size = 4096
+        self.len_of_mac = 12
+        self.sema = sema
 
     def run(self):
         while True:
@@ -26,13 +29,16 @@ class Client(threading.Thread):
                 try:
                     data = json.loads(data)
                     print("Received : " + str(data))
-                    if 'mydata' in data:
-                        print(data['mydata'])
+                    dbutil = DBUtil()
+                    self.sema.acquire()
+                    dbutil.update_database(data)
+                    self.sema.release()
                 except ValueError:
                     continue
 
             self.client_conn.close()
             break
+
 
 class Receiver:
     def __init__(self):
@@ -40,6 +46,7 @@ class Receiver:
         self.port = 49999
         self.threads = list()
         self.tcp_sock = None
+        self.semaphore = threading.Semaphore(1)
 
     def get_ip_address(self):
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
@@ -61,7 +68,7 @@ class Receiver:
     def run(self):
         self.create_socket()
         while True:
-            client = Client(self.tcp_sock.accept())
+            client = Client(self.tcp_sock.accept(), self.semaphore)
             client.start()
             self.threads.append(client)
 
