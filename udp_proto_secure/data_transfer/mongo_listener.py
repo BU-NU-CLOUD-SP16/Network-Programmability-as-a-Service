@@ -22,9 +22,9 @@ def get_database_entries():
 	obj = next(cursor, None)
 	data={}
 	while obj is not None:
-		if 'tenantId' in obj:
-			if 'hosts' in obj['tenantId']: 
-				data[obj['tenantId']]=obj['hosts']
+		if 'tenantId' in obj and 'hosts' in obj:
+			 
+			data[obj['tenantId']]=obj['hosts']
 		obj=next(cursor,None)
 	return data
 

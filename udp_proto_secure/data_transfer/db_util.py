@@ -62,7 +62,22 @@ class DBUtil:
 			cursor = collection.find({'tenantId' : tenantId})
 			obj = next(cursor, None)
 			if obj is not None:
+				if 'hosts' in obj:
+					if cmp(hosts,obj['hosts'])==0:
+						continue
+				stop_network = self.command_beginning + " stopNetwork " + str(tenantId)
+				os.chdir(self.ovx_dir)
+		
+				tmp = os.popen(stop_network).read()
+				print(tmp)
+
 				collection.update({'_id':obj['_id']},{'$set':{'hosts':hosts}})
+				start_network = self.command_beginning + " startNetwork " + str(tenantId)
+				os.chdir(self.ovx_dir)
+		
+				tmp = os.popen(start_network).read()
+				print(tmp)
+
 		'''		
 		receiver_hosts, is_tenant_present = self.get_all_hosts_for_tenant(tenantId)
 
