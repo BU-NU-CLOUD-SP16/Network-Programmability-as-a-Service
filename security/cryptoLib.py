@@ -50,7 +50,7 @@ class AesCtr:
 
 class Hmac:
 	def __init__(self,dataS,key):
-		f=open("encKey","r")
+		f=open("hmacKey","r")
 		m=f.read()
 		self.dataS=dataS	
 		self.data=str(self.dataS).encode()
