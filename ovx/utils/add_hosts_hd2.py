@@ -2,7 +2,7 @@
 import os
 import sys
 def main():
-	os.chdir("/home/ovx/OpenVirteX/utils")
+	os.chdir("/home/ubuntu/OpenVirteX/utils")
 	for c in commands: 
 		tmp = os.popen(c).read()
 		print tmp
