@@ -49,7 +49,7 @@ class AesCtr:
 	
 
 class Hmac:
-	def __init__(self,dataS,key):
+	def __init__(self,dataS):
 		f=open("hmacKey","r")
 		m=f.read()
 		self.dataS=dataS	
