@@ -4,7 +4,7 @@ import os
 import sys
 
 def main():
-	os.chdir("/home/ovx/OpenVirteX/utils")
+	os.chdir("/home/ubuntu/OpenVirteX/utils")
 	for c in commands: 
 		tmp = os.popen(c).read()
 		print tmp
@@ -19,7 +19,7 @@ except:
 commands=[]
 
 #######Virtual network 1
-commands.append("sudo python ovxctl.py -n createNetwork tcp:"+ip1+" 10.0.0.0 16")
+commands.append("sudo python ovxctl.py -n createNetwork tcp:"+ip1+" 10.0.0.0 16 1")
 commands.append("sudo python ovxctl.py -n createSwitch 1 00:00:00:00:00:00:01:00")
 commands.append("sudo python ovxctl.py -n createSwitch 1 00:00:00:00:00:00:02:00")
 commands.append("sudo python ovxctl.py -n createSwitch 1 00:00:00:00:00:00:03:00")
@@ -67,7 +67,7 @@ commands.append("sudo python ovxctl.py -n connectLink 1 00:a4:23:05:00:00:00:05 
 commands.append("sudo python ovxctl.py -n startNetwork 1")
 
 #######Virtual network 2
-commands.append("sudo python ovxctl.py -n createNetwork tcp:"+ip2+" 10.0.0.0 16")
+commands.append("sudo python ovxctl.py -n createNetwork tcp:"+ip2+" 10.0.0.0 16 2")
 commands.append("sudo python ovxctl.py -n createSwitch 2 00:00:00:00:00:00:01:00")
 commands.append("sudo python ovxctl.py -n createSwitch 2 00:00:00:00:00:00:02:00")
 commands.append("sudo python ovxctl.py -n createSwitch 2 00:00:00:00:00:00:03:00")
