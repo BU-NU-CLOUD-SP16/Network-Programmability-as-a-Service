@@ -43,8 +43,7 @@ Explore novel networking services enabled by providing full network control to t
 ```
 **Install OpenVirtex**  
 ```
-#git clone https://github.com/OPENNETWORKINGLAB/OpenVirteX.git -b 0.0-MAINT
-#sh OpenVirteX/scripts/ovx.sh
+#git clone https://github.com/OPENNETWORKINGLAB/OpenVirteX.git -b 0.0-MAINT  
 ```
 **Install FloodLight**
 ```
@@ -62,6 +61,7 @@ Explore novel networking services enabled by providing full network control to t
 ```
 **2. Running OpenVirtex**  
 ```
+#sh OpenVirteX/scripts/ovx.sh  
 #ovx_virtual_topo1.py   
 // for hardware domain 1  
 #ovx_virtual_topo2.py  
