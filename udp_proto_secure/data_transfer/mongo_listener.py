@@ -90,6 +90,7 @@ def main():
 											'tenantId' : tenantId,
 											'hosts' : doc['o']['$set']['hosts']
 									}
+								'''
 								queue.append(data)
 								currentCount+=1
 								duration=default_timer()-start
@@ -98,7 +99,7 @@ def main():
 									#currentCount=0
 									del queue
 									start=default_timer()
-									
+								'''	
 				except (AutoReconnect, StopIteration):
 					sleep(_SLEEP)
 
