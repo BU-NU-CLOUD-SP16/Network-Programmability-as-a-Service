@@ -11,6 +11,8 @@
 Mentor: Somaya Arianfar
 
 ---
+![alt tag](https://github.com/BU-NU-CLOUD-SP16/Network-Programmability-as-a-Service/blob/master/image.jpg)  
+
 **The goals of this project are:**
 
 Add multi–domain network virtualization support to OpenVirtex
