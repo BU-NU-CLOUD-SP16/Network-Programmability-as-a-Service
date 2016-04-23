@@ -3,9 +3,9 @@
 ---
 **Contributors:**
 
-1. Akshay Battaje
-2. Amey
-3. Deepanshu
+1. Akshay Kumar Battaje
+2. Amey Uchagaonkar  
+3. Deepanshu Lulla
 4. Anuj Tyagi
 
 Mentor: Somaya Arianfar
@@ -23,34 +23,47 @@ Explore novel networking services enabled by providing full network control to t
 * Mininet (virtual network emulator) and OVS  
 * OpenVirtex  
 * SDN Controller (FloodLight)  
-* Python    
+* Python  
+* Java  
+* JSON  
 * MongoDB  
+  
 
 ---
 **Installation and Deployment**  
 
-***Mininet Install**  
+**Mininet Install**  
 ```
-commands here
+#sudo apt-get install mininet  
+#git clone git://github.com/mininet/mininet  
+#cd mininet  
+#install.sh -h  
 ```
 **OpenVirtex Install**  
 ```
-commands here
+#git clone https://github.com/OPENNETWORKINGLAB/OpenVirteX.git -b 0.0-MAINT
+#sh OpenVirteX/scripts/ovx.sh
 ```
 **FloodLight Install**
 ```
-commands here
+sudo apt-get install build-essential default-jdk ant python-dev eclipse  
+git clone git://github.com/floodlight/floodlight.git  
+cd floodlight  
+java -jar target/floodlight.jar  
 ```
 
 **Setup:**
 
-**1. Running Mininet**  
+**1. Running Mininet Topology**  
 ```
-My code here  
+#python mininet_topology.py  
 ```
 **2. Running OpenVirtex**  
 ```
-'Code here'  
+#ovx_virtual_topo1.py   
+// for hardware domain 1  
+#ovx_virtual_topo2.py  
+//for hardware domain 2  
 ```
 **3. Configure Openvirtex**   
 ```
