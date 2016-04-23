@@ -10,14 +10,14 @@
 
 Mentor: Somaya Arianfar
 ---
-***The goals of this project are:***
+**The goals of this project are:**
 
 Add multi–domain network virtualization support to OpenVirtex
 Support interoperability between the Multi-domain OpenVirtex and the rest of the MOC platform, e.g. HaaS or/and OpenStack 
 Evaluate various aspects of the resulting system, and
 Explore novel networking services enabled by providing full network control to the customers
 
-***Technologies used:***
+**Technologies used:**
 
 Mininet (virtual network emulator) and OVS
 OpenVirtex 
@@ -25,5 +25,5 @@ SDN Controller (FloodLight)
 Python
 MongoDB
 ---
-***Setup:***
+**Setup:**
 
