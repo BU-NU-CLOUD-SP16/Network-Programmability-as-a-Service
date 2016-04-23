@@ -7,8 +7,8 @@
 2. Amey
 3. Deepanshu
 4. Anuj Tyagi
-
 Mentor: Somaya Arianfar
+
 ---
 **The goals of this project are:**
 
