@@ -48,10 +48,10 @@ Explore novel networking services enabled by providing full network control to t
 ```
 **Install FloodLight**
 ```
-sudo apt-get install build-essential default-jdk ant python-dev eclipse  
-git clone git://github.com/floodlight/floodlight.git  
-cd floodlight  
-java -jar target/floodlight.jar  
+#sudo apt-get install build-essential default-jdk ant python-dev eclipse  
+#git clone git://github.com/floodlight/floodlight.git  
+#cd floodlight  
+#java -jar target/floodlight.jar  
 ```
 
 **Setup:**
