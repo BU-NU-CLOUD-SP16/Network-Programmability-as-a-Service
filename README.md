@@ -23,8 +23,15 @@ Explore novel networking services enabled by providing full network control to t
 * Mininet (virtual network emulator) and OVS  
 * OpenVirtex  
 * SDN Controller (FloodLight)  
-* Python  
+* Python    
 * MongoDB  
+
 ---
 **Setup:**
+
+**1. Running Mininet**
+
+**2. Running OpenVirtex**
+
+**3. Configure Openvirtex**  
 
