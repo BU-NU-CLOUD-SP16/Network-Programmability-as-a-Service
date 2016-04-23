@@ -7,6 +7,7 @@
 2. Amey
 3. Deepanshu
 4. Anuj Tyagi
+
 Mentor: Somaya Arianfar
 
 ---
@@ -19,11 +20,11 @@ Explore novel networking services enabled by providing full network control to t
 
 **Technologies used:**
 
-Mininet (virtual network emulator) and OVS
-OpenVirtex 
-SDN Controller (FloodLight)
-Python
-MongoDB
+* Mininet (virtual network emulator) and OVS  
+* OpenVirtex  
+* SDN Controller (FloodLight)  
+* Python  
+* MongoDB  
 ---
 **Setup:**
 
