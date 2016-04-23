@@ -114,7 +114,10 @@ usage
 c=ServerSocket()
 c.bindTo("127.0.0.1",24566)
 c.limitListentersTo(4)
-c.run()
+
+obj,IP=c.acceptConnection()
+c.sendmsg(obj,msg)
+c.recvmsg(obj)
 
 '''
 	def __init__(self):
@@ -148,29 +151,44 @@ c.run()
 
 
 	
-	def run(self):
+	
+	def acceptConnection(self):
 		try:
-
-			while True:
-				clientConnSocket,clientAddress=self.objSocket.accept()
-
-				client = ThreadedReceiverClient(clientConnSocket,clientAddress)
-				client.start()
-				self.threads.append(client)
+	
+			clientConnSocket,clientAddress=self.objSocket.accept()
+			
+			return clientConnSocket,clientAddress
 		except Exception as e:
 			print(e)
 			sys.exit()
+	
+	def sendMsg(self,clientConnSocket,msg):
+		try:
+			self.clientSocket.sendall(message)
 			
-			
-			
+		except Exception as e:
+			print(e)
+			sys.exit()
+
+	def recvMsg(self,clientConnSocket):
+		while True:
+			data=self.clientSocket.recv(4096)
+			if len(data) == 0:
+				return
+			else:
+				break
+		return data	
+
 class SSLServerSocket:
 
 '''
 usage 
-c=SSLServerSocket()
+c=ServerSocket()
 c.bindTo("127.0.0.1",24566)
 c.limitListentersTo(4)
-c.run()
+obj,IP=c.acceptConnection()
+c.sendmsg(obj,msg)
+c.recvmsg(obj)
 
 '''
 	def __init__(self):
@@ -203,47 +221,37 @@ c.run()
 			print(e)
 			sys.exit()
 
-
 	
-	def run(self):
+	
+	def acceptConnection(self):
 		try:
-
-			while True:
-				clientConnSocket,clientAddress=self.objSocket.accept()
-
-				client = ThreadedReceiverClient(clientConnSocket,clientAddress)
-				client.start()
-				self.threads.append(client)
+	
+			clientConnSocket,clientAddress=self.objSocket.accept()
+			
+			return clientConnSocket,clientAddress
 		except Exception as e:
 			print(e)
 			sys.exit()
-
-
-class ThreadedReceiverClient(threading.Thread):
 	
-	def __init__(self,clientConnSocket,clientAddress):	
-		self.semaphore = threading.Semaphore(1)
-		threading.Thread.__init__(self)
-		self.objSocket = clientConnSocket
-		self.client_addr = clientAddress
-		
-
-	def sendMsg(self,msg):
+	def sendMsg(self,clientConnSocket,msg):
 		try:
-			self.objSocket.sendall(message)
+			self.clientSocket.sendall(message)
 			
 		except Exception as e:
 			print(e)
 			sys.exit()
 
-	def recvMsg(self):
+	def recvMsg(self,clientConnSocket):
 		while True:
-			data=self.objSocket.recv(4096)
+			data=self.clientSocket.recv(4096)
 			if len(data) == 0:
 				return
 			else:
 				break
-		return data
+		return data	
+	
+
+
 
 	
 	
