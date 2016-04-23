@@ -32,19 +32,19 @@ Explore novel networking services enabled by providing full network control to t
 ---
 **Installation and Deployment**  
 
-**Mininet Install**  
+**Install Mininet **  
 ```
 #sudo apt-get install mininet  
 #git clone git://github.com/mininet/mininet  
 #cd mininet  
 #install.sh -h  
 ```
-**OpenVirtex Install**  
+**Install OpenVirtex **  
 ```
 #git clone https://github.com/OPENNETWORKINGLAB/OpenVirteX.git -b 0.0-MAINT
 #sh OpenVirteX/scripts/ovx.sh
 ```
-**FloodLight Install**
+**Install FloodLight **
 ```
 sudo apt-get install build-essential default-jdk ant python-dev eclipse  
 git clone git://github.com/floodlight/floodlight.git  
