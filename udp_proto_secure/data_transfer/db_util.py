@@ -54,6 +54,7 @@ class DBUtil:
 
 	def update_database(self, data):
 		#tenantId = data['tenantId']
+		print("the updated data is"+str(data))
 		for tenantId,hosts in data.iteritems():
 			connection = MongoClient('mongodb://localhost:27017/')
 			db = connection['OVX']

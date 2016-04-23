@@ -9,6 +9,7 @@ def main():
 commands=[]
 commands.append("sudo python ovxctl.py -n stopNetwork 1")
 commands.append("sudo python ovxctl.py -n connectHost 1 00:a4:23:05:00:00:00:03 1 00:00:00:00:00:01")
+
 commands.append("sudo python ovxctl.py -n connectHost 1 00:a4:23:05:00:00:00:04 1 00:00:00:00:00:03")
 commands.append("sudo python ovxctl.py -n startNetwork 1")
 commands.append("sudo python ovxctl.py -n stopNetwork 2")

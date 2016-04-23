@@ -45,6 +45,8 @@ def get_tenant_id(obj_id):
 
 def main():
 	timeout=5.0
+	queue=[]
+	queue_size=10
 	currentCount=0
 	nmaputil = NMAPUtil()
 	message_sender = MessageSender(49999)
@@ -79,7 +81,7 @@ def main():
 							if 'hosts' in doc['o']['$set']:
 								print("inserted host")
 								print(doc['o']['$set']['hosts'])
-								'''
+								
 								if 'o2' in doc and '_id' in doc['o2']:
 									
 									tenantId = get_tenant_id(doc['o2']['_id'])
@@ -88,12 +90,13 @@ def main():
 											'tenantId' : tenantId,
 											'hosts' : doc['o']['$set']['hosts']
 									}
-								'''
+								queue.append(data)
 								currentCount+=1
 								duration=default_timer()-start
 								if duration>=timeout or len(queue)>=queue_size:			
-									message_sender.send_to_peers(active_ips,get_database_entries())
-									currentCount=0
+									message_sender.send_to_peers(active_ips,queue[len(queue)-1])
+									#currentCount=0
+									del queue
 									start=default_timer()
 									
 				except (AutoReconnect, StopIteration):
