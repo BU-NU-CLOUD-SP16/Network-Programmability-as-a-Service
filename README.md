@@ -67,7 +67,7 @@ Explore novel networking services enabled by providing full network control to t
 #ovx_virtual_topo2.py  
 //for hardware domain 2  
 ```
-**3. Configure Openvirtex**   
+**3. Running Central Server**   
 ```
-Code here  
+# python central_server.py
 ```
