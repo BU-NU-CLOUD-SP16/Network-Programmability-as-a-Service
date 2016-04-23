@@ -27,6 +27,21 @@ Explore novel networking services enabled by providing full network control to t
 * MongoDB  
 
 ---
+**Installation and Deployment**  
+
+***Mininet Install**  
+```
+commands here
+```
+**OpenVirtex Install**  
+```
+commands here
+```
+**FloodLight Install**
+```
+commands here
+```
+
 **Setup:**
 
 **1. Running Mininet**  
