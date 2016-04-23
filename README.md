@@ -1,7 +1,7 @@
 #Network Programmability as a Cloud Service
 ##Network virtualization and programability
 ---
-** Contributors: **
+**Contributors:**
 
 1. Akshay Battaje
 2. Amey
