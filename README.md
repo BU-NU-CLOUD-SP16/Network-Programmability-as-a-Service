@@ -69,5 +69,5 @@ Explore novel networking services enabled by providing full network control to t
 ```
 **3. Running Central Server**   
 ```
-# python central_server.py
+# python centralServer.py
 ```
