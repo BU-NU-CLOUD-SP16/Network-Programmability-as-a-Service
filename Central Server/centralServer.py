@@ -9,7 +9,7 @@ from socketClass import ClientSocket,ServerSocket,SSLClientSocket,SSLServerSocke
 #instruction_queue=list()
 msgId=0
 data_dict=dict()
-class CentralServer(threading.Thread):
+class CentralServer:
 	
 	def __init__(self,list_ip):
 		self.sock=ServerSocket()
