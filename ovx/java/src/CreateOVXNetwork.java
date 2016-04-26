@@ -48,7 +48,7 @@ public class CreateOVXNetwork extends ApiHandler<Map<String, Object>> {
         JSONRPC2Response resp = null;
         try {
 
-        	// Added for  NPACS project
+        	/*Added by abattaje*/
         	final Number tenantId = HandlerUtils.<Number>fetchField(
                     TenantHandler.TENANT, params, true, null);
         	
@@ -70,7 +70,6 @@ public class CreateOVXNetwork extends ApiHandler<Map<String, Object>> {
             /*final OVXNetwork virtualNetwork = new OVXNetwork(ctrlUrls, addr,
                     netMask.shortValue());*/
             
-	    // Added for  NPACS project
             int tenantID = OpenVirteXController.getTenantCounter().getNewIndex(tenantId.intValue());
             final OVXNetwork virtualNetwork = new OVXNetwork(tenantID, ctrlUrls, addr,
                     netMask.shortValue());
