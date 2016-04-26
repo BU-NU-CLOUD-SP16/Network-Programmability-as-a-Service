@@ -131,6 +131,7 @@ ovx/utils/add_hosts_hd3.py -- Adds hosts to hardware domain 3
 **2. Test for connectivity:**
 ```
 On the VM running mininet,
+
 mininet> h1 ping -c3 h3
 
 mininet> h2 ping -c3 h6
@@ -138,4 +139,33 @@ mininet> h2 ping -c3 h6
 mininet> h2 ping -c3 h4
 
 The above commands should be able to ping the hosts
+```
+
+**Teardown:**
+
+**1. Stop mininet:**
+```
+On the VM running mininet
+
+mininet> exit
+
+# sudo mn -c
+
+```
+
+**2. Stop publisher:**
+```
+# cd ovx/utils/
+# python stop_publisher.py
+```
+
+**3. Stop receivers on each OVX:**
+```
+# cd ovx/utils/
+# python stop_receiver.py
+```
+
+**4. Stopping OpenVirteX:**
+```
+Press CTRL + C to stop the script ovx.sh
 ```
