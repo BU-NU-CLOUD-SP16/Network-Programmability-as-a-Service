@@ -36,21 +36,42 @@ Explore novel networking services enabled by providing full network control to t
 
 **Install Mininet**  
 ```
-#sudo apt-get install mininet  
-#git clone git://github.com/mininet/mininet  
-#cd mininet  
-#install.sh -h  
+# sudo apt-get install mininet  
+# git clone git://github.com/mininet/mininet  
+# cd mininet  
+# install.sh -h  
 ```
 **Install OpenVirtex**  
 ```
-#git clone https://github.com/OPENNETWORKINGLAB/OpenVirteX.git -b 0.0-MAINT  
+# git clone https://github.com/OPENNETWORKINGLAB/OpenVirteX.git -b 0.0-MAINT
+
+Copy the following files from this repository to the OpenVirteX directory as
+
+# cp ovx/java/src/CreateOVXNetwork.java OpenVirteX/src/main/java/net/onrc/openvirtex/api/service/handlers/tenant/
+# cp ovx/java/src/ConnectHost.java OpenVirteX/src/main/java/net/onrc/openvirtex/api/service/handlers/tenant/
+# cp ovx/java/src/DisconnectHost.java OpenVirteX/src/main/java/net/onrc/openvirtex/api/service/handlers/tenant/
+
+These files are necessary for sending messages on change in configuration
+
+Remove the old jar file
+# rm OpenVirteX/target/OpenVirteX.jar
+
+Make following changes in OpenVirteX/scripts/ovx.sh file
+
+1. Comment the line 
+    mvn package > /dev/null
+    
+2. Add the below line,
+    mvn package -Dmaven.test.skip=true > /dev/null
+
+
 ```
 **Install FloodLight**
 ```
-#sudo apt-get install build-essential default-jdk ant python-dev eclipse  
-#git clone git://github.com/floodlight/floodlight.git  
-#cd floodlight  
-#java -jar target/floodlight.jar  
+# sudo apt-get install build-essential default-jdk ant python-dev eclipse  
+# git clone git://github.com/floodlight/floodlight.git  
+# cd floodlight  
+# java -jar target/floodlight.jar  
 ```
 
 **Setup:**
