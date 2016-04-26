@@ -93,7 +93,8 @@ public class ConnectHost extends ApiHandler<Map<String, Object>> {
                         host.getDBObject());
                 reply.put(TenantHandler.TENANT, tenantId.intValue());
                 resp = new JSONRPC2Response(reply, 0);
-                /* Added by abattaje */
+                
+                /* Added for NPACS project */
                 // Send the message to server here
                 JSONObject jsonMessage = new JSONObject();
                 jsonMessage.put("op", "ADD");
@@ -104,6 +105,7 @@ public class ConnectHost extends ApiHandler<Map<String, Object>> {
                 data.put("mac", host.getMac().toString());
                 jsonMessage.put("data", data);
                 this.log.info("JSON Message: {}", jsonMessage.toString());
+                
                 String SERVERIP = "10.0.0.22";
                 int SERVERPORT = 50000;
                 Socket socket = new Socket(SERVERIP, SERVERPORT);
@@ -112,6 +114,7 @@ public class ConnectHost extends ApiHandler<Map<String, Object>> {
                 out.write(jsonMessage.toString());
                 out.close();
                 socket.close();
+                /* End of - Added for NPACS project */
             }
 
         } catch (final MissingRequiredField e) {
