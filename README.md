@@ -75,18 +75,30 @@ Make following changes in OpenVirteX/scripts/ovx.sh file
 ```
 
 **Setup:**
-
+```
+Run the following on seperate VMs
+```
 **1. Running Mininet Topology**  
 ```
-#python mininet_topology.py  
+# sudo python mininet_topology.py  
 ```
-**2. Running OpenVirtex**  
+
+**2. Running OpenVirteX**
 ```
+(i) Start MongoDB on for OpenVirteX
+
+# sudo mkdir ~/mongo_data/
+# sudo mongod --dbpath ~/mongo_data/ --logpath ~/mongologs --fork
+
+(ii) Run OpenVirteX
 # sh OpenVirteX/scripts/ovx.sh  
-# ovx_virtual_topo1.py   
-// for hardware domain 1  
-# ovx_virtual_topo2.py  
-//for hardware domain 2  
+
+(iii) Add switches to the the virtual topology
+# python ovx/utils/add_switches.py <CONTROLLER_IP_1> <PORT_1> <CONTROLLER_IP_2> <PORT_2>
+
+where,
+CONTROLLER_IP_1 : IP address of the controller for Tenant_1
+CONTROLLER_IP_2 : IP address of the controller for Tenant_2
 ```
 **3. Running the Publisher**   
 ```
