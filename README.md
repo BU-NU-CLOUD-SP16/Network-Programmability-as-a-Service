@@ -61,13 +61,23 @@ Explore novel networking services enabled by providing full network control to t
 ```
 **2. Running OpenVirtex**  
 ```
-#sh OpenVirteX/scripts/ovx.sh  
-#ovx_virtual_topo1.py   
+# sh OpenVirteX/scripts/ovx.sh  
+# ovx_virtual_topo1.py   
 // for hardware domain 1  
-#ovx_virtual_topo2.py  
+# ovx_virtual_topo2.py  
 //for hardware domain 2  
 ```
-**3. Running Central Server**   
+**3. Running the Publisher**   
 ```
-# python centralServer.py
+# cd ovx/scripts
+# sh start_publisher.sh <file_with_list_of_ovx_ips>
+
+The publisher will start listening to incoming messages on port 50000
+```
+**4. Running message receivers on OVXs**
+```
+# cd ovx/scripts
+# sh start_receiver.sh <ip_of_the_publisher>
+
+The receiver will start listening to incoming messages from the publisher on port 49999
 ```
