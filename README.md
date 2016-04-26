@@ -11,7 +11,6 @@
 Mentor: Somaya Arianfar
 
 ---
-![alt tag](https://github.com/BU-NU-CLOUD-SP16/Network-Programmability-as-a-Service/blob/master/extras/image.jpg)  
 
 **The goals of this project are:**
 
