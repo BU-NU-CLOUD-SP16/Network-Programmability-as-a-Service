@@ -58,11 +58,13 @@ class GenericTree(Topo):
 
 def run(a, b):
     c1 = RemoteController('c1', a, 6633)
-    #c2 = RemoteController('c2', b, 6633)
+    c2 = RemoteController('c2', b, 6633)
+    c3 = RemoteController('c3', b, 6633)
     # Change the args of GenericTree() to your desired values. You could even get them from command line.
     net = Mininet(topo=GenericTree(depth=3, fanout=2),autoSetMacs=True,controller=None)
     net.addController(c1)
-    #net.addController(c2)
+    net.addController(c2)
+    net.addController(c3)
     net.start()
 
     # installStaticFlows( net )
@@ -73,6 +75,6 @@ def run(a, b):
 if __name__ == '__main__':
     setLogLevel('info')
     try:
-        run(sys.argv[1],sys.argv[2])
+        run(sys.argv[1], sys.argv[2], sys.argv[3])
     except:
         print "Please enter IP addresses of 2 OVX instances as CLI"
