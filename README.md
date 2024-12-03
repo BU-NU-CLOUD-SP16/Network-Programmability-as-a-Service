@@ -9,7 +9,7 @@
 4. Deepanshu Lulla
    
 
-Mentor: Somaya Arianfar
+Mentor: Somaya Arianfar https://scholar.google.com/citations?user=5pJNSzMAAAAJ&hl=en
 
 ---
 
