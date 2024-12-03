@@ -4,9 +4,10 @@
 **Contributors:**
 
 1. Akshay Kumar Battaje
-2. Amey Uchagaonkar  
-3. Deepanshu Lulla
-4. Anuj Tyagi
+2. Anuj Tyagi
+3. Amey Uchagaonkar  
+4. Deepanshu Lulla
+   
 
 Mentor: Somaya Arianfar
 
